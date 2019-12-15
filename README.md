@@ -82,6 +82,10 @@ while True:
 
     else:
         print("Pilih menu yang tersedia")
+### flowchart
+![PicsArt_12-15-06 26 44](https://user-images.githubusercontent.com/56240221/70862021-2fab3d00-1f69-11ea-971b-8f151d391505.jpg)
+
+
 ### Penjelasan:
 
 1.) Pertama kita membuat sebuah dictionary kosong yang nantinya akan diinputkan data ketika program dijalankan.
