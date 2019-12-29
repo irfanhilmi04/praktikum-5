@@ -1,200 +1,108 @@
 # praktikum-5
-## Program Data Mahasiswa
+## Membuuat program sederhana yang akan menampilkan daftar nilai mahasiswa, dengan menggunakan Dictionary
 
 Pada praktikum 5, kita akan membuat program sederhana untuk membuat data mahasiswa menggunakan Dictionary dengan python.
+print("Program Input Nilai") print("================")
 
-### berikut codingnya:
-x = {}
+daftar = {}
 
 while True:
-    c = input("\n(T)ambah, (U)bah, (H)apus, (C)ari, (L)ihat, (K)eluar: ")
 
-    if c.lower() == 't':
-        print("Tambah Data")
-        nama = input("Nama           : ")
-        nim = int(input("NIM            : "))
-        uts = int(input("Nilai UTS      : "))
-        uas = int(input("Nilai UAS      : "))
-        tugas = int(input("Nilai Tugas    : "))
-        akhir = tugas*30/100 + uts*35/100 + uas*35/100
-        x[nama] = nim, uts, uas, tugas, akhir
+perintah = input("(L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar: ")
+## Masukan huruf T untuk menginput data (Daftar Nilai)
+ (T)ambah
+    if perintah.lower() == 't':
+        nim = input("Masukan NIM: ")
+        nama = input("Masukan nama: ")
+        n_tugas = int(input("Masukan nilai tugas: "))
+        n_UTS = int(input("Masukan nilai UTS: "))
+        n_UAS = int(input("Masukan nilai UAS: "))
+        a = n_tugas * 30 / 100
+        b = n_UTS * 35 / 100
+        c = n_UAS * 35 / 100
+        n_akhir = a + b + c
+        daftar[nama] = [nama, nim, n_tugas, n_UTS, n_UAS, n_akhir]
+ ![mencari T](https://user-images.githubusercontent.com/56240221/71557148-bf2a1300-2a74-11ea-8d94-ac4faceedfde.jpg)
 
-    elif c.lower() == 'u':
-        print("Ubah Data")
-        nama = input("Masukkan Nama  : ")
-        if nama in x.keys():
-            nim = int(input("NIM            : "))
-            uts = int(input("Nilai UTS      : "))
-            uas = int(input("Nilai UAS      : "))
-            tugas = int(input("Nilai Tugas    : "))
-            akhir = tugas * 30 / 100 + uts * 35 / 100 + uas * 35 / 100
-            x[nama] = nim, uts, uas, tugas, akhir
+## Masukan huruf L untuk melihat Daftar Nilai
+(L)ihat
+    elif perintah.lower() == 'l':
+        print("Daftar Nilai:")
+        print("===================================================================")
+        print("| No |      Nama      |    NIM    | Tugas |  UTS  |  UAS  | Akhir |")
+        print("===================================================================")
+        no = 1
+        for tabel in daftar.values():
+            print("| {0:2} | {1:14} | {2:9} | {3:5} | {4:5} | {5:5} | {6:5} |".format
+                  (no, tabel[0],
+                   tabel[1], tabel[2],
+                   tabel[3], tabel[4], tabel[5]))
+            no += 1
+ ![mencari L](https://user-images.githubusercontent.com/56240221/71557159-d8cb5a80-2a74-11ea-9f11-7be95300c366.jpg)
+
+## Masukan huruf U untuk mengubah data mahasiswa
+(U)bah
+    elif perintah.lower() == 'u':
+        nama = input("Masukan nama untuk mengubah data: ")
+        if nama in daftar.keys():
+            print("Masukan data yang ingin di ubah :")
+            data = input("(Semua), (Nama), (NIM), "
+                         "(Tugas), (UTS), (UAS) : ")
+            if data.lower() == "semua":
+                print("==========================")
+                print("Ubah data {}.".format(nama))
+                print("==========================")
+                daftar[nama][1] = input("Edit NIM:")
+                daftar[nama][2] = int(input("Edit Nilai Tugas: "))
+                daftar[nama][3] = int(input("Edit Nilai UTS: "))
+                daftar[nama][4] = int(input("Edit Nilai UAS: "))
+                # print(daftar)
+            elif data.lower() == "nim":
+                daftar[nama][1] = input("NIM:")
+            elif data.lower() == "tugas":
+                daftar[nama][2] = int(input("Nilai Tugas: "))
+            elif data.lower() == "uts":
+                daftar[nama][3] = int(input("Nilai UTS: "))
+            elif data.lower() == "uas":
+                daftar[nama][4] = int(input("Nilai UAS: "))
+            else:
+                print("Perintah tidak ditemukan.")
+
         else:
-            print("Nama {0} tidak ditemukan".format(nama))
-
-    elif c.lower() == 'h':
-        print("Hapus Data")
-        nama = input("Masukkan Nama  : ")
-        if nama in x.keys():
-            del x[nama]
+            print("'{}' tidak ditemukan.".format(nama))
+![mengubah U](https://user-images.githubusercontent.com/56240221/71557168-f1d40b80-2a74-11ea-898f-d1fd4b65d499.jpg)
+## Masukan huruf C untuk mencari data nilai mahasiswa
+(C)ari
+    elif perintah.lower() == 'c':
+        print("Mencari daftar nilai: ")
+        print("=================================================")
+        nama = input("Masukan nama untuk mencari daftar nilai : ")
+        if nama in daftar.keys():
+            print("Nama {0}, dengan NIM : {1}\n"
+                  "Nilai Tugas: {2}, UTS: {3}, dan UAS: {4}\n"
+                  "dan nilai akhir {5}".format(nama, daftar[nama][1],
+                                               daftar[nama][2], daftar[nama][3],
+                                               daftar[nama][4], daftar[nama][5]))
         else:
-            print("Nama {0} Tidak Ditemukan".format(nama))
+            print("'{}' tidak ditemukan.".format(nama))
+![mengubah C](https://user-images.githubusercontent.com/56240221/71557173-0912f900-2a75-11ea-8cfe-6821a815220d.jpg)
 
-    elif c.lower() == 'c':
-        print("Cari Data")
-        nama = input("Masukkan Nama : ")
-        if nama in x.keys():
-            print("="*73)
-            print("|                             Daftar Mahasiswa                          |")
-            print("="*73)
-            print("| Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*73)
-            print("| {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
-                  .format(nama, nim, uts, uas, tugas, akhir))
-            print("="*73)
+## Masukan huruf H untuk menghapus data nilai mahasiswa
+(H)apus
+    elif perintah.lower() == 'h':
+        nama = input("Masukan nama untuk menghapus data : ")
+        if nama in daftar.keys():
+            del daftar[nama]
+            print("Data '{}' dihapus.".format(nama))
         else:
-            print("Nama {0} Tidak Ditemukan".format(nama))
+            print("'{}' tidak ditemukan.".format(nama))
+![mengunah H](https://user-images.githubusercontent.com/56240221/71557180-22b44080-2a75-11ea-83d6-3fabd622bcd1.jpg)
 
-    elif c.lower() == 'l':
-        if x.items():
-            print("="*78)
-            print("|                               Daftar Mahasiswa                             |")
-            print("="*78)
-            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*78)
-            i = 0
-            for z in x.items():
-                i += 1
-                print("| {no:2d} | {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
-                      .format(z[0][:13], z[1][0], z[1][1], z[1][2], z[1][3], z[1][4], no=i))
-            print("=" * 78)
-        else:
-            print("="*78)
-            print("|                               Daftar Mahasiswa                             |")
-            print("="*78)
-            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*78)
-            print("|                                TIDAK ADA DATA                              |")
-            print("="*78)
-
-    elif c. lower() == 'k':
+## Masukan huruf K untuk keluar/selesai
+(K)eluar
+    elif perintah.lower() == 'k':
         break
 
     else:
-        print("Pilih menu yang tersedia")
-### flowchart
-![PicsArt_12-15-06 26 44](https://user-images.githubusercontent.com/56240221/70862021-2fab3d00-1f69-11ea-971b-8f151d391505.jpg)
-
-
-### Penjelasan:
-
-1.) Pertama kita membuat sebuah dictionary kosong yang nantinya akan diinputkan data ketika program dijalankan.
-
-x = {}
-
-2.) Lalu kita membuat kondisi perulangan dan sebuah keterangan untuk pilihan menu yang akan menjalankan program.
-
-while True:
-    c = input("\n(T)ambah, (U)bah, (H)apus, (C)ari, (L)ihat, (K)eluar: ")
-
-3.) Membuat syntax untuk menambahkan data.
-
-    if c.lower() == 't':
-        print("Tambah Data")
-        nama = input("Nama           : ")
-        nim = int(input("NIM            : "))
-        uts = int(input("Nilai UTS      : "))
-        uas = int(input("Nilai UAS      : "))
-        tugas = int(input("Nilai Tugas    : "))
-        akhir = tugas*30/100 + uts*35/100 + uas*35/100
-        x[nama] = nim, uts, uas, tugas, akhir
-
-Disini apabila kita menginputkan 't' maka kita akan diminta untuk menginputkan beberapa data. Data yang kita inputkan akan masuk ke dictionary 'x' yang telah dibuat tadi dengan data 'nama' sebagai keys dan sisanya sebagai valuesnya.
-
-4.) Membuat syntax untuk mengubah data.
-
-    elif c.lower() == 'u':
-        print("Ubah Data")
-        nama = input("Masukkan Nama  : ")
-        if nama in x.keys():
-            nim = int(input("NIM            : "))
-            uts = int(input("Nilai UTS      : "))
-            uas = int(input("Nilai UAS      : "))
-            tugas = int(input("Nilai Tugas    : "))
-            akhir = tugas * 30 / 100 + uts * 35 / 100 + uas * 35 / 100
-            x[nama] = nim, uts, uas, tugas, akhir
-        else:
-            print("Nama {0} tidak ditemukan".format(nama))
-
-Apabila kita menginput 'u' maka akan ada keterangan untuk mengubah data dan kita akan diminta untuk menginputkan nama yang mau diubah datanya, apabila nama tidak ada maka outputnya "Nama {} tidak ditemukan". Dimana {} adalah nama/data yang mau kita ubah.
-
-5.) Membuat syntax untuk menghapus data.
-
-    elif c.lower() == 'h':
-        print("Hapus Data")
-        nama = input("Masukkan Nama  : ")
-        if nama in x.keys():
-            del x[nama]
-        else:
-            print("Nama {0} Tidak Ditemukan".format(nama))
-
-Apabila kita menginput 'h' maka kita akan diminta menginput nama yang akan dihapus. Jika nama ada di dalam dictionary, maka system akan menghapus keys/nama tersebut beserta valuesnya pada statement del x[nama].
-
-6.) Membuat syntax untuk mencari data.
-
-    elif c.lower() == 'c':
-        print("Cari Data")
-        nama = input("Masukkan Nama : ")
-        if nama in x.keys():
-            print("="*73)
-            print("|                             Daftar Mahasiswa                          |")
-            print("="*73)
-            print("| Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*73)
-            print("| {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
-                  .format(nama, nim, uts, uas, tugas, akhir))
-            print("="*73)
-        else:
-            print("Nama {0} Tidak Ditemukan".format(nama))
-
-Apabila kita menginputkan 'c' maka kita akan diminta untuk memasukkan nama yang akan dicari. Apabila nama yang dicari ada di dalam dictionary maka outputnya akan menampilkan data dari nama tersebut.
-
-7.) Membuat syntax untuk melihat atau menampilkan data.
-
-    elif c.lower() == 'l':
-        if x.items():
-            print("="*78)
-            print("|                               Daftar Mahasiswa                             |")
-            print("="*78)
-            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*78)
-            i = 0
-            for z in x.items():
-                i += 1
-                print("| {no:2d} | {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
-                      .format(z[0][:13], z[1][0], z[1][1], z[1][2], z[1][3], z[1][4], no=i))
-            print("=" * 78)
-        else:
-            print("="*78)
-            print("|                               Daftar Mahasiswa                             |")
-            print("="*78)
-            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*78)
-            print("|                                TIDAK ADA DATA                              |")
-            print("="*78)
-
-Apabila kita menginput 'l' maka sistem akan menampilkan data - data yang sudah kita masukkan. Jika kita belum memasukkan data maka outputnya menjadi "TIDAK ADA DATA".
-
-8.) Membuat syntax untuk menghentikan perulangan.
-
-    elif c. lower() == 'k':
-        break
-
-Apabila kita menginput 'k' maka program akan langsung berhenti.
-
-9.) Membuat syntax untuk apabila memilih pilihan yang tidak ada di menu.
-
-    else:
-        print("Pilih menu yang tersedia")
-
-Jika kita menginputkan selain yang ada pada menu (t, u, h, c, l, k) maka kita akan diminta untuk memilih menu yang tersedia.
+        print("Silahkan masukan perintah terlebih dahulu.")
+        
