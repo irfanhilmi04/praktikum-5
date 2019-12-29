@@ -10,7 +10,7 @@ while True:
 
 perintah = input("(L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar: ")
 ## Masukan huruf T untuk menginput data (Daftar Nilai)
- (T)ambah
+ # (T)ambah
     if perintah.lower() == 't':
         nim = input("Masukan NIM: ")
         nama = input("Masukan nama: ")
@@ -25,7 +25,7 @@ perintah = input("(L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar: ")
  ![mencari T](https://user-images.githubusercontent.com/56240221/71557148-bf2a1300-2a74-11ea-8d94-ac4faceedfde.jpg)
 
 ## Masukan huruf L untuk melihat Daftar Nilai
-(L)ihat
+# (L)ihat
     elif perintah.lower() == 'l':
         print("Daftar Nilai:")
         print("===================================================================")
@@ -41,7 +41,7 @@ perintah = input("(L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar: ")
  ![mencari L](https://user-images.githubusercontent.com/56240221/71557159-d8cb5a80-2a74-11ea-9f11-7be95300c366.jpg)
 
 ## Masukan huruf U untuk mengubah data mahasiswa
-(U)bah
+# (U)bah
     elif perintah.lower() == 'u':
         nama = input("Masukan nama untuk mengubah data: ")
         if nama in daftar.keys():
@@ -72,7 +72,7 @@ perintah = input("(L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar: ")
             print("'{}' tidak ditemukan.".format(nama))
 ![mengubah U](https://user-images.githubusercontent.com/56240221/71557168-f1d40b80-2a74-11ea-898f-d1fd4b65d499.jpg)
 ## Masukan huruf C untuk mencari data nilai mahasiswa
-(C)ari
+# (C)ari
     elif perintah.lower() == 'c':
         print("Mencari daftar nilai: ")
         print("=================================================")
@@ -88,7 +88,7 @@ perintah = input("(L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar: ")
 ![mengubah C](https://user-images.githubusercontent.com/56240221/71557173-0912f900-2a75-11ea-8cfe-6821a815220d.jpg)
 
 ## Masukan huruf H untuk menghapus data nilai mahasiswa
-(H)apus
+# (H)apus
     elif perintah.lower() == 'h':
         nama = input("Masukan nama untuk menghapus data : ")
         if nama in daftar.keys():
@@ -99,10 +99,12 @@ perintah = input("(L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar: ")
 ![mengunah H](https://user-images.githubusercontent.com/56240221/71557180-22b44080-2a75-11ea-83d6-3fabd622bcd1.jpg)
 
 ## Masukan huruf K untuk keluar/selesai
-(K)eluar
+# (K)eluar
     elif perintah.lower() == 'k':
         break
 
     else:
         print("Silahkan masukan perintah terlebih dahulu.")
         
+## flowchart
+![Flowchart](https://user-images.githubusercontent.com/56240221/71557225-b7b73980-2a75-11ea-87b2-620667d3412c.png)
